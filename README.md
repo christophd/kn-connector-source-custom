@@ -118,7 +118,7 @@ spec:
       parameters:
         repeatCount: 1
       steps:
-        - to: "https://swapi.dev/api/{{resource}}?httpMethod=GET"
+        - to: "https://swapi.info/api/{{resource}}?httpMethod=GET"
         - unmarshal:
             json: { }
         - removeHeaders:

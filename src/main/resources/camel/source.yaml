@@ -18,7 +18,7 @@
 apiVersion: camel.apache.org/v1
 kind: Pipe
 metadata:
-  name: kn-connector-source-star-wars
+  name: star-wars-source
 spec:
   source:
     ref:

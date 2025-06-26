@@ -6,8 +6,8 @@ spec:
   template:
     spec:
       containers:
-        - image: quay.io/openshift-knative/kn-connector-source-star-wars:1.0-SNAPSHOT
-          name: timer
+        - image: quay.io/christophd/star-wars-source:1.0-SNAPSHOT
+          name: star-wars-source
           env:
             - name: CAMEL_KAMELET_STAR_WARS_SOURCE_RESOURCE
               value: "starships"

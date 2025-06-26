@@ -30,7 +30,7 @@ import static org.citrusframework.http.actions.HttpActionBuilder.http;
 
 @QuarkusTest
 @CitrusSupport
-public class KnConnectorSourceTest {
+public class StarWarsSourceTest {
 
     @CitrusResource
     private GherkinTestActionRunner tc;
@@ -60,25 +60,14 @@ public class KnConnectorSourceTest {
                         "eye_color": "blue",
                         "birth_year": "19BBY",
                         "gender": "male",
-                        "homeworld": "https://swapi.dev/api/planets/1/",
-                        "films": [
-                            "https://swapi.dev/api/films/1/",
-                            "https://swapi.dev/api/films/2/",
-                            "https://swapi.dev/api/films/3/",
-                            "https://swapi.dev/api/films/6/"
-                        ],
+                        "homeworld": "https://swapi.info/api/planets/1",
+                        "films": "@ignore@",
                         "species": [],
-                        "vehicles": [
-                            "https://swapi.dev/api/vehicles/14/",
-                            "https://swapi.dev/api/vehicles/30/"
-                        ],
-                        "starships": [
-                            "https://swapi.dev/api/starships/12/",
-                            "https://swapi.dev/api/starships/22/"
-                        ],
-                        "created": "2014-12-09T13:50:51.644000Z",
-                        "edited": "2014-12-20T21:17:56.891000Z",
-                        "url": "https://swapi.dev/api/people/1/"
+                        "vehicles": "@ignore@",,
+                        "starships": "@ignore@",,
+                        "created": "@ignore@",
+                        "edited": "@ignore@",
+                        "url": "https://swapi.info/api/people/1"
                     }
                     """)
                     .header("ce-id", "@matches([0-9A-Z]{15}-[0-9]{16})@")
@@ -109,23 +98,16 @@ public class KnConnectorSourceTest {
                             "eye_color": "yellow",
                             "birth_year": "112BBY",
                             "gender": "n/a",
-                            "homeworld": "https://swapi.dev/api/planets/1/",
-                            "films": [
-                                "https://swapi.dev/api/films/1/",
-                                "https://swapi.dev/api/films/2/",
-                                "https://swapi.dev/api/films/3/",
-                                "https://swapi.dev/api/films/4/",
-                                "https://swapi.dev/api/films/5/",
-                                "https://swapi.dev/api/films/6/"
-                            ],
+                            "homeworld": "https://swapi.info/api/planets/1",
+                            "films": "@ignore@",
                             "species": [
-                                "https://swapi.dev/api/species/2/"
+                                "https://swapi.info/api/species/2"
                             ],
                             "vehicles": [],
                             "starships": [],
-                            "created": "2014-12-10T15:10:51.357000Z",
-                            "edited": "2014-12-20T21:17:50.309000Z",
-                            "url": "https://swapi.dev/api/people/2/"
+                            "created": "@ignore@",
+                            "edited": "@ignore@",
+                            "url": "https://swapi.info/api/people/2"
                         }
                         """)
                         .header("ce-id", "@matches([0-9A-Z]{15}-[0-9]{16})@")
