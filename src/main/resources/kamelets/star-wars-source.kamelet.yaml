@@ -34,11 +34,21 @@ spec:
     description: "Gets data from the Star Wars galaxy!"
     type: object
     properties:
+      serviceUri:
+        title: Service URI
+        description: The service URI called for Star Wars data
+        type: string
+        default: "https://swapi.info/api"
       resource:
         title: Resource
         description: The API resource to retrieve
         type: string
         default: people
+      split:
+        title: Split
+        description: Split the resources to individual events
+        type: boolean
+        default: true
   types:
     out:
       mediaType: application/json
@@ -54,17 +64,24 @@ spec:
       parameters:
         repeatCount: 1
       steps:
-        - to: "https://swapi.info/api/{{resource}}?httpMethod=GET"
-        - unmarshal:
-            json: { }
+        - to: "{{serviceUri}}/{{resource}}?httpMethod=GET"
         - removeHeaders:
             pattern: '*'
-        - split:
-            simple: "${body}"
-            steps:
-              - delay:
-                  expression:
-                    constant: 1000
-              - marshal:
-                  json: { }
-              - to: "kamelet:sink"
+        - choice:
+            when:
+              - simple: "{{split}} == true"
+                steps:
+                  - unmarshal:
+                      json: { }
+                  - split:
+                      simple: "${body}"
+                      steps:
+                        - delay:
+                            expression:
+                              constant: 1000
+                        - marshal:
+                            json: { }
+                        - to: "kamelet:sink"
+            otherwise:
+              steps:
+                - to: "kamelet:sink"
